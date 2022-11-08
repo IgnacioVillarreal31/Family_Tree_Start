@@ -44,5 +44,10 @@ namespace Library
         {
             this.children.Add(p);
         }
+
+        public void Accept(Visitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 }

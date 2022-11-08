@@ -41,6 +41,9 @@ namespace Program
             p1.AddChildren(p5);
 
             p6.AddChildren(p8);
+
+            PersonaContent p = new PersonaContent(p7);
+            Console.WriteLine(p.GetTextToPrint());
         }
     }
 }
