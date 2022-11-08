@@ -1,21 +1,12 @@
 using System;
-using System.Text;
+using System.Collections.Generic;
 
 namespace Library
 {
-    public abstract class Visitor
+    public interface Visitor
     {
-        public string Content
-        {
-            get
-            {
-                return this.ContentBuilder.ToString();
-            }
-        }
-
-        protected StringBuilder ContentBuilder { get; } = new StringBuilder();
-
-        public abstract void Visit(Persona persona);
-
+        void Operaciones(Operaciones operaciones){}
+        void VisitPersona(Persona persona){}
+        void VisitNode(Node node){}
     }
 }

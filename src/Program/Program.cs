@@ -34,16 +34,24 @@ namespace Program
             Persona p7 = new Persona("Mirtiña",1000000);
             Persona p8 = new Persona("Jisus",1000000000);
 
-            p7.AddChildren(p2);
             p7.AddChildren(p3);
+            p7.AddChildren(p1);
 
             p1.AddChildren(p4);
             p1.AddChildren(p5);
 
             p6.AddChildren(p8);
 
-            PersonaContent p = new PersonaContent(p7);
-            Console.WriteLine(p.GetTextToPrint());
+            Visitor v1 = new Visitor1();
+            v1.Operaciones(p7);
+            v1.Operaciones(n1);
+
+            Visitor v2 = new Visitor2();
+            v2.Operaciones(p7);
+            v2.Operaciones(n1);
+
+            Visitor3 v3 = new Visitor3();
+            v3.Operaciones(p7);
         }
     }
 }
