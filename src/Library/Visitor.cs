@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-
-namespace Library
+namespace VisitorDemo
 {
-    public interface Visitor
+    public abstract class Visitor
     {
-        void Operaciones(Operaciones operaciones){}
-        void VisitPersona(Persona persona){}
-        void VisitNode(Node node){}
+        public abstract void Visit(Persona persona);
+
+        public abstract void Visit(Node node);
     }
 }
