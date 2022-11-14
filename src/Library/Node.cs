@@ -1,20 +1,40 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Library
+namespace VisitorDemo
 {
-    public class Node : Operaciones
+    public class Node
     {
-        private int number;
-
+        private Persona persona;
         private List<Node> children = new List<Node>();
 
-        public int Number {
+        public Node(string nombre, int edad)
+        {
+            persona = new Persona(nombre, edad);
+        }
+
+        public string Nombre
+        {
             get
             {
-                return this.number;
+                return this.persona.Nombre;
             }
         }
+
+        public int Edad {
+            get
+            {
+                return this.persona.Edad;
+            }
+        }
+
+        public Persona Persona
+        {
+            get
+            {
+                return this.persona;
+            }
+        } 
 
         public ReadOnlyCollection<Node> Children { 
             get
@@ -23,46 +43,14 @@ namespace Library
             }
         }
 
-        public Node(int number)
-        {
-            this.number = number;
-        }
-
         public void AddChildren(Node n)
         {
             this.children.Add(n);
         }
         
-        public void Accept(Visitor1 visitor)
+        public void Accept(Visitor visitor)
         {
-            visitor.VisitNode(this);
+            visitor.Visit(this);
         }
-        public void Accept(Visitor2 visitor)
-        {
-            visitor.VisitNode(this);
-        }
-
-        public int AñosTotales()
-        {
-            int total = Number;
-            foreach (Node nodes in Children)
-            {
-                total += nodes.Number;
-            }
-            return total;
-        }
-        public int MasGrande()
-        {
-            int mayor = 0;
-            foreach (Node nodes in Children)
-            {
-                if (nodes.Number > mayor)
-                {
-                    mayor = nodes.Number;
-                }
-            }
-            return mayor;
-        }
-        
     }
 }

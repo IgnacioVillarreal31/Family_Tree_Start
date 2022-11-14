@@ -1,57 +1,30 @@
 ﻿using System;
-using Library;
 
-namespace Program
+namespace VisitorDemo
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Node n1 = new Node(1);
-            Node n2 = new Node(2);
-            Node n3 = new Node(3);
-            Node n4 = new Node(4);
-            Node n5 = new Node(5);
-            Node n6 = new Node(6);
-            Node n7 = new Node(7);
+            Node nodo1 = new Node("Federico", 19);
+            Node nodo11 = new Node("Gaston", 24);
+            Node nodo12 = new Node("Laura", 20);
+            Node nodo121 = new Node("Mateo", 26);
+            Node nodo1211 = new Node("Beethoven", 21);
 
-            n1.AddChildren(n2);
-            n1.AddChildren(n3);
+            nodo121.AddChildren(nodo1211);
+            nodo12.AddChildren(nodo121);
+            nodo1.AddChildren(nodo12);
+            nodo1.AddChildren(nodo11);
 
-            n2.AddChildren(n4);
-            n2.AddChildren(n5);
+            SumaEdadesContent SumaEdades = new SumaEdadesContent(nodo1);
+            Console.WriteLine(SumaEdades.GetEdad());
 
-            n3.AddChildren(n6);
-            n3.AddChildren(n7);
+            HijoMayorContent HijoMayor = new HijoMayorContent(nodo1);
+            Console.WriteLine(HijoMayor.GetPersona().Nombre);
 
-            // visitar el árbol aquí
-            Persona p1 = new Persona("Gerardo",32);
-            Persona p2 = new Persona("Faker",12);
-            Persona p3 = new Persona("Leona",3);
-            Persona p4 = new Persona("Hasbulla",20);
-            Persona p5 = new Persona("Mr.Beast",38);
-            Persona p6 = new Persona("Santiago",18);
-            Persona p7 = new Persona("Mirtiña",1000000);
-            Persona p8 = new Persona("Jisus",1000000000);
-
-            p7.AddChildren(p3);
-            p7.AddChildren(p1);
-
-            p1.AddChildren(p4);
-            p1.AddChildren(p5);
-
-            p6.AddChildren(p8);
-
-            Visitor v1 = new Visitor1();
-            v1.Operaciones(p7);
-            v1.Operaciones(n1);
-
-            Visitor v2 = new Visitor2();
-            v2.Operaciones(p7);
-            v2.Operaciones(n1);
-
-            Visitor3 v3 = new Visitor3();
-            v3.Operaciones(p7);
+            MayorNombreContent MayorNombre = new MayorNombreContent(nodo1);
+            Console.WriteLine(MayorNombre.GetPersona().Nombre);
         }
     }
 }
